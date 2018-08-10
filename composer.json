@@ -1,7 +1,8 @@
 {
     "name": "ra/php-training-mysql",
-    "require": {},
-    "require-dev": {
+    "require": {
         "phpunit/phpunit": "^7.3"
+    },
+    "require-dev": {
     }
 }
