@@ -8,7 +8,7 @@ if(!$connection){
 
 // PDO version
 try{
-    $connection = new PDO('mysql:host=den1.mysql1.gear.host;dbname=reunionisland5', 'reunionisland5', 'Gn789!4cF-rs');
+    $connection = new PDO('mysql:host=myhost;dbname=mydbname', 'myname', 'pwd');
 }catch(PDOException $e){
     echo "Database connection failed: " . $e->getMessage;
     die();
