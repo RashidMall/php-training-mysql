@@ -10,11 +10,11 @@ function checkUser(){
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $user = ORM::for_table('user')->where('username', $_POST['username'])->find_one();
         
-        if ($user['username'] == $_POST['username'] && $user['password'] == $_POST['password']) {
+        if ($user->username == $_POST['username'] && $user->password == SHA1($_POST['password'])) {
             session_start ();
 
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['password'] = $user['password'];
+            $_SESSION['username'] = $user->username;
+            $_SESSION['password'] = $user->password;
     
             header('Location: ' . './read.php');
         }
