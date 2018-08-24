@@ -216,14 +216,18 @@ function updateRow(){
 function deleteRow(){
     global $connection;
     if(isset($_GET['id'])){
-        $id = $_GET['id'];
+        /* $id = $_GET['id'];
 
         $query = "DELETE FROM hiking ";
         $query .= "WHERE id = ?";
 
         $result = $connection->prepare($query);
         $result->execute(array($id));
-        header('Location: '.'./read.php');
+        header('Location: '.'./read.php'); */
+
+        // ORM version
+        $rando = ORM::for_table('hiking')->where('id', $_GET['id'])->find_one();
+        $rando->delete();
     }
 }
 
