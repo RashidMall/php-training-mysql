@@ -228,6 +228,7 @@ function deleteRow(){
         // ORM version
         $rando = ORM::for_table('hiking')->where('id', $_GET['id'])->find_one();
         $rando->delete();
+        header('Location: '.'./read.php');
     }
 }
 
