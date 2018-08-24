@@ -125,7 +125,7 @@ function readRows(){
     } */
 
     // ORM version
-    $randos = ORM::for_table('hiking');
+    $randos = ORM::for_table('hiking')->find_many();
     foreach($randos as $row){
         $id = $row['id'];
         $name = $row['name'];
