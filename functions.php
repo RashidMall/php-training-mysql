@@ -89,7 +89,7 @@ function readRows(){
     } */
 
     // PDO version
-    try{
+/*     try{
         $query = "SELECT * FROM hiking";
         foreach($connection->query($query) as $row){
             $id = $row['id'];
@@ -122,6 +122,37 @@ function readRows(){
     }catch(PDOException $e){
         print "Erreur!: " . $e->getMessage() . "<br/>";
         die();
+    } */
+
+    // ORM version
+    $randos = ORM::for_table('hiking');
+    foreach($randos as $row){
+        $id = $row['id'];
+        $name = $row['name'];
+        $difficulty = $row['difficulty'];
+        $distance = $row['distance'];
+        $time = $row['duration'];
+        $h_diff = $row['height_difference'];
+
+        echo "<tr>";
+        echo "<th scope='row'>$id</th>";
+        // Put hyperlink on names for connected users only
+        if(isUserConnected()){
+            // String of variables to pass to the next page
+            $vars_to_pass = "id=$id&name=$name&difficulty=$difficulty&distance=$distance&duration=$time&height_difference=$h_diff";
+            echo "<td><a href='./update.php?$vars_to_pass'>$name</a></td>";
+        }else{
+            echo "<td>$name</td>";
+        }
+        echo "<td>$difficulty</td>";
+        echo "<td>$distance km</td>";
+        echo "<td>$time</td>";
+        echo "<td>$h_diff m</td>";
+        // Show delete button for connected users only
+        if(isUserConnected()){
+            echo "<td><a href='./delete.php?id=$id' class='btn btn-danger'>Supprimer</a></td>";
+        }
+        echo "</tr>";
     }
 }
 
