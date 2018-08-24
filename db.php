@@ -1,4 +1,4 @@
-<?php 
+<?php
 // MySQL version
 /* $connection = mysqli_connect('den1.mysql1.gear.host', 'reunionisland5', 'Gn789!4cF-rs', 'reunionisland5');
 
@@ -7,10 +7,19 @@ if(!$connection){
 } */
 
 // PDO version
-try{
+/* try{
     $connection = new PDO('mysql:host=den1.mysql1.gear.host;dbname=reunionisland5', 'reunionisland5', 'Gn789!4cF-rs');
 }catch(PDOException $e){
     echo "Database connection failed: " . $e->getMessage;
     die();
-}
+} */
+
+// ORM version
+require_once './vendor/j4mie/idiorm/idiorm.php';
+
+ORM::configure('mysql:host=den1.mysql1.gear.host;dbname=reunionisland5');
+ORM::configure('username', 'reunionisland5');
+ORM::configure('password', 'Gn789!4cF-rs');
+
+$connection = ORM::get_db();
 ?>

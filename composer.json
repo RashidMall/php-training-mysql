@@ -1,7 +1,8 @@
 {
     "name": "ra/php-training-mysql",
     "require": {
-        "phpunit/phpunit": "^7.3"
+        "phpunit/phpunit": "^7.3",
+        "j4mie/idiorm": "^1.5"
     },
     "require-dev": {
     }
