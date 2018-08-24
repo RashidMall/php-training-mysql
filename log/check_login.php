@@ -8,19 +8,13 @@ function isUserConnected(){
 function checkUser(){
     global $connectionUser;
     if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        // Retrieve username and password from the database
-        $query = "SELECT * FROM user WHERE username = $username AND password = ?";
-        $result = $connectionUser->prepare($query);
-        $result->execute(array(sha1($password)));
-
-        if ($username == $_POST['username'] && $password == $_POST['password']) {
+        $user = ORM::for_table('user')->where('username', $_POST['username'])->andWhere('password', $_POST['password'])->find_one();
+        
+        if ($user['username'] == $_POST['username'] && $user['password'] == $_POST['password']) {
             session_start ();
 
-            $_SESSION['username'] = $_POST['username'];
-            $_SESSION['password'] = $_POST['password'];
-            echo 'yay';
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['password'] = $user['password'];
     
             header('Location: ' . './read.php');
         }
