@@ -22,7 +22,8 @@ function createRow(){
             echo "La randonnée a été ajoutée avec succès.";
         } */
 
-        try{
+        // PDO version
+        /* try{
             $name = $_POST['name'];
             $difficulty = $_POST['difficulty'];
             $distance = $_POST['distance'];
@@ -43,7 +44,18 @@ function createRow(){
         }catch(PDOException $e){
             print "Erreur!: " . $e->getMessage() . "<br/>";
             die();
-        }
+        } */
+
+        // ORM version
+        $newRando = ORM::for_table('hiking')->create();
+
+        $newRando->name = $_POST['name'];
+        $newRando->difficulty = $_POST['difficulty'];
+        $newRando->distance = $_POST['distance'];
+        $newRando->duration = $_POST['duration'];
+        $newRando->height_difference = $_POST['height_difference'];
+
+        $newRando->save();
     }
 }
 
