@@ -15,11 +15,11 @@ if(!$connection){
 } */
 
 //ORM version
-require_once './vendor/j4mie/idiorm/idiorm.php';
+/* require_once './vendor/j4mie/idiorm/idiorm.php';
 
 ORM::configure('mysql:host=den1.mysql1.gear.host;dbname=users25');
 ORM::configure('username', 'users25');
 ORM::configure('password', 'Yp4UBm15b~x!');
 
-$connectionUser = ORM::get_db();
+$connectionUser = ORM::get_db(); */
 ?>
