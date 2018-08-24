@@ -8,7 +8,7 @@ function isUserConnected(){
 function checkUser(){
     global $connectionUser;
     if (isset($_POST['username']) && isset($_POST['password'])) {
-        $user = ORM::for_table('user')->where('username', $_POST['username'])->andWhere('password', $_POST['password'])->find_one();
+        $user = ORM::for_table('user')->where('username', $_POST['username'])->find_one();
         
         if ($user['username'] == $_POST['username'] && $user['password'] == $_POST['password']) {
             session_start ();
