@@ -162,7 +162,7 @@ function updateRow(){
     if(isset($_POST['submit'])){
         global $connection;
 
-        try{
+        /* try{
             $id = $_POST['id'];
             $name = $_POST['name'];
             $difficulty = $_POST['difficulty'];
@@ -190,6 +190,24 @@ function updateRow(){
         }catch(PDOException $e){
             print "Erreur!: " . $e->getMessage() . "<br/>";
             die();
+        } */
+
+        // ORM version
+        $id = $_POST['id'];
+
+        $rando = ORM::for_table('hiking')->where('id', $id)->find_one();
+        $rando->name = $_POST['name'];
+        $rando->difficulty = $_POST['difficulty'];
+        $rando->distance = $_POST['distance'];
+        $rando->duration = $_POST['duration'];
+        $rando->height_difference = $_POST['height_difference'];
+        $rando->save();
+
+        if(!$rando){
+            die('Query FAILED');
+        }else{
+            echo "La randonnée n°$id a été modifiée avec succès.";
+            header('Location: '.'./read.php');
         }
     }
 }
