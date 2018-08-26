@@ -1,4 +1,7 @@
-<?php 
+<?php session_start (); ?>
+<?php require('./log/check_login.php'); ?>
+<?php
+include './functions.php';
 include './includes/header.php';
 include './includes/navbar.php';
 ?>

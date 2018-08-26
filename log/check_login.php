@@ -1,5 +1,5 @@
 <?php
-include './dbUser.php';
+include './db.php';
 
 function isUserConnected(){
     return isset($_SESSION['username']) && isset($_SESSION['password']);
@@ -21,6 +21,7 @@ function checkUser(){
         else {
             echo '<body onLoad="alert(\'Membre non reconnu...\')">';
             echo '<meta http-equiv="refresh" content="0;URL=./read.php">';
+            header('Location: ' . './login.php');
         }
     }
     else {
