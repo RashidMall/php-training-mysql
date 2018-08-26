@@ -1,4 +1,4 @@
-> Ce repo doit être directement cloné dans votre répertoire apache (/var/www/html ou htdocs ou etc. )
+# https://lit-springs-46628.herokuapp.com/read.php
 
 # PHP & MySQL
 

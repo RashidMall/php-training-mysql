@@ -1,6 +1,6 @@
 <?php 
 // MySQL version
-/* $connection = mysqli_connect('den1.mysql1.gear.host', 'users25', 'Yp4UBm15b~x!', 'users25');
+/* $connection = mysqli_connect('host', 'db', 'pwd', 'user');
 
 if(!$connection){
     die("Database connection failed!");
